@@ -1,0 +1,30 @@
+#include<vector>
+#include<algorithm>
+class Solution {
+public:
+    double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
+        int a =nums1.size();
+        int b=nums2.size();
+        int c=a+b,i;
+        vector<int> nums3(c);
+        for(i=0;i<a;i++){
+            nums3[i]=nums1[i];
+        }
+        for(int j=0;j<b;j++){
+            nums3[i+j]=nums2[j];
+        }
+
+        sort(nums3.begin(),nums3.end());
+        double x,y;
+        if(c%2==1){
+            x= nums3[c/2];
+            return x;
+        }
+        else{
+            x=nums3[c/2];
+            y=nums3[c/2-1];
+            x=(x+y)/2;
+            return x;
+        }
+    }
+};
